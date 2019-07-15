@@ -8,7 +8,7 @@
     <meta name="description" content="Apex admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
     <meta name="keywords" content="admin template, Apex admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="PIXINVENT">
-    <title>Login Page - Apex responsive bootstrap 4 admin template</title>
+    <title>Register Page - Apex responsive bootstrap 4 admin template</title>
     <link rel="apple-touch-icon" sizes="60x60" href="app-assets/img/ico/apple-icon-60.png">
     <link rel="apple-touch-icon" sizes="76x76" href="app-assets/img/ico/apple-icon-76.png">
     <link rel="apple-touch-icon" sizes="120x120" href="app-assets/img/ico/apple-icon-120.png">
@@ -42,68 +42,51 @@
       <div class="main-panel">
         <!-- BEGIN : Main Content-->
         <div class="main-content">
-          <div class="content-wrapper"><!--Login Page Starts-->
-            <section id="login">
+          <div class="content-wrapper"><!--Registration Page Starts-->
+            <section id="regestration">
               <div class="container-fluid">
                 <div class="row full-height-vh m-0">
                   <div class="col-12 d-flex align-items-center justify-content-center">
                     <div class="card">
                       <div class="card-content">
-                        <div class="card-body login-img">
+                        <div class="card-body register-img">
                           <div class="row m-0">
-                            <div class="col-lg-6 d-lg-block d-none py-2 text-center align-middle">
-                              <img src="app-assets/img/gallery/login.png" alt="" class="img-fluid mt-5" width="400" height="230">
+                            <div class="col-lg-6 d-none d-lg-block py-2 text-center">
+                              <img src="app-assets/img/gallery/register.png" alt="" class="img-fluid mt-3 pl-3" width="400"
+                                height="230">
                             </div>
-                            <div class="col-lg-6 col-md-12 bg-white px-4 pt-3">
-                              <h4 class="mb-2 card-title">Login</h4>
+                            <div class="col-lg-6 col-md-12 px-4 pt-3 bg-white">
+                              <h4 class="card-title mb-2">¡Registrate!</h4>
                               <p class="card-text mb-3">
-                                ¡Bienvenido!, puede iniciar sesión aquí 
+                                (*) Requeridos
                               </p>
-                              {{-- <div class="alert alert-danger" role="alert">
-                                <strong>Error!</strong> Email o Contraseña estan incorrectos.
-                              </div> --}}
-                              <input type="text" class="form-control mb-3" placeholder="Email" />
-                              <input type="password" class="form-control mb-1" placeholder="Contraseña" />
-                              <div class="d-flex justify-content-between mt-2">
-                                {{-- <div class="remember-me">
-                                  <div class="custom-control custom-checkbox custom-control-inline mb-3">
-                                    <input type="checkbox" id="customCheckboxInline1" name="customCheckboxInline1" class="custom-control-input" />
-                                    <label class="custom-control-label" for="customCheckboxInline1">
-                                      Recordar
-                                    </label>
-                                  </div>
-                                </div>
-                                <div class="forgot-password-option">
-                                  <a href="forgot-password-page.html" class="text-decoration-none text-primary">¿Olvidaste tu contraseña?
-                                    ?</a>
-                                </div> --}}
+                              <input type="text" class="form-control mb-3" placeholder="Nombre" />
+                              <input type="email" class="form-control mb-3" placeholder="Email" />
+                              <input type="password" class="form-control mb-3" placeholder="Contraseña" />
+                              <input type="password" class="form-control mb-3" placeholder="Confirmar Contraseña" />
+                              <div class="custom-control custom-checkbox custom-control-inline mb-3">
+                                <input type="checkbox" id="customCheckboxInline1" name="customCheckboxInline1" class="custom-control-input"
+                                  checked />
+                                <label class="custom-control-label" for="customCheckboxInline1">
+                                  Aceptar <a href="#">Términos Y Condiciones</a>
+                                </label>
                               </div>
                               <div class="fg-actions d-flex justify-content-between">
                                 <div class="login-btn">
                                   <button class="btn btn-outline-primary">
-                                    <a href="{{route('registrar.public')}}" class="text-decoration-none">Registrar</a>
+                                    <a href="{{url('/')}}" class="text-decoration-none">
+                                      Iniciar Sesión
+                                    </a>
                                   </button>
                                 </div>
                                 <div class="recover-pass">
                                   <button class="btn btn-primary">
-                                    <a href="dashboard1.html" class="text-decoration-none text-white">Entrar</a>
+                                    <a href="login-page.html" class="text-decoration-none text-white">
+                                      Register
+                                    </a>
                                   </button>
                                 </div>
                               </div>
-                              <hr class="m-0">
-                              {{-- <div class="d-flex justify-content-between mt-3">
-                                <div class="option-login">
-                                  <h6 class="text-decoration-none text-primary">Inicia sesión por aquí</h6>
-                                </div>
-                                <div class="social-login-options">
-                                  <a class="btn btn-social-icon mr-2 btn-facebook">
-                                    <span class="fa fa-facebook"></span>
-                                  </a>
-                                  <a class="btn btn-social-icon mr-2 btn-twitter">
-                                    <span class="fa fa-twitter"></span>
-                                  </a>
-                                </div>
-                              </div> --}}
                             </div>
                           </div>
                         </div>
@@ -113,7 +96,7 @@
                 </div>
               </div>
             </section>
-            <!--Login Page Ends-->
+            <!--Registration Page Ends-->
 
           </div>
         </div>

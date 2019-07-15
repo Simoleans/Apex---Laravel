@@ -14,5 +14,8 @@
 Route::get('/', function () {
     return view('login');
 });
+Route::get('/registrar', function () {
+    return view('register');
+})->name('registrar.public');
 
 Route::get('/dashboard', 'LoginController@index')->name('dashboard');
