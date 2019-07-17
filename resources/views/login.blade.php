@@ -8,7 +8,7 @@
     <meta name="description" content="Apex admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
     <meta name="keywords" content="admin template, Apex admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="PIXINVENT">
-    <title>Login Page - Apex responsive bootstrap 4 admin template</title>
+    <title>{{ config('app.name') }}</title>
     <link rel="apple-touch-icon" sizes="60x60" href="app-assets/img/ico/apple-icon-60.png">
     <link rel="apple-touch-icon" sizes="76x76" href="app-assets/img/ico/apple-icon-76.png">
     <link rel="apple-touch-icon" sizes="120x120" href="app-assets/img/ico/apple-icon-120.png">
@@ -57,38 +57,49 @@
                             <div class="col-lg-6 col-md-12 bg-white px-4 pt-3">
                               <h4 class="mb-2 card-title">Login</h4>
                               <p class="card-text mb-3">
-                                ¡Bienvenido!, puede iniciar sesión aquí 
+                                ¡Bienvenido!, puede iniciar sesión aquí
                               </p>
-                              {{-- <div class="alert alert-danger" role="alert">
-                                <strong>Error!</strong> Email o Contraseña estan incorrectos.
-                              </div> --}}
-                              <input type="text" class="form-control mb-3" placeholder="Email" />
-                              <input type="password" class="form-control mb-1" placeholder="Contraseña" />
-                              <div class="d-flex justify-content-between mt-2">
-                                {{-- <div class="remember-me">
-                                  <div class="custom-control custom-checkbox custom-control-inline mb-3">
-                                    <input type="checkbox" id="customCheckboxInline1" name="customCheckboxInline1" class="custom-control-input" />
-                                    <label class="custom-control-label" for="customCheckboxInline1">
-                                      Recordar
-                                    </label>
+                               @if ($errors->any())
+                                   <div class="alert alert-danger">
+                                      <ul>
+                                      @foreach($errors->all() as $error)
+                                         <li>{{$error}}</li>
+                                      @endforeach
+                                      </ul>
+                                    </div>
+                              @endif
+                              @include('partials.flash')
+                              <form action="{{route('auth')}}" method="POST">
+                                @csrf
+                                <input type="email" class="form-control mb-3" name="email" placeholder="Email" required="" />
+                                <input type="password" class="form-control mb-1"name="password"  placeholder="Contraseña" required="" />
+                                <div class="d-flex justify-content-between mt-2">
+                                  <!--  <div class="remember-me">
+                                    <div class="custom-control custom-checkbox custom-control-inline mb-3">
+                                      <input type="checkbox" id="customCheckboxInline1" name="customCheckboxInline1" class="custom-control-input" />
+                                      <label class="custom-control-label" for="customCheckboxInline1">
+                                        Recordar
+                                      </label>
+                                    </div>
+                                  </div> -->
+                                  <div class="forgot-password-option">
+                                    <a href="forgot-password-page.html" class="text-decoration-none text-primary">¿Olvidaste tu contraseña?
+                                      </a>
                                   </div>
                                 </div>
-                                <div class="forgot-password-option">
-                                  <a href="forgot-password-page.html" class="text-decoration-none text-primary">¿Olvidaste tu contraseña?
-                                    ?</a>
-                                </div> --}}
-                              </div>
-                              <div class="fg-actions d-flex justify-content-between">
-                                <div class="login-btn">
-                                  <button class="btn btn-outline-primary">
-                                    <a href="{{route('registrar.public')}}" class="text-decoration-none">Registrar</a>
-                                  </button>
-                                </div>
-                                <div class="recover-pass">
-                                  <button class="btn btn-primary">
-                                    <a href="dashboard1.html" class="text-decoration-none text-white">Entrar</a>
-                                  </button>
-                                </div>
+                                <div class="fg-actions d-flex justify-content-between">
+                                  <div class="login-btn">
+
+                                      <a href="{{route('registrar.public')}}" class="btn btn-outline-primary">Registrar</a>
+
+                                  </div>
+                                  <div class="recover-pass">
+                                    <button class="btn  btn-outline-success" type="submit">
+                                      Entrar
+                                    </button>
+
+                                  </div>
+                              </form>
                               </div>
                               <hr class="m-0">
                               {{-- <div class="d-flex justify-content-between mt-3">

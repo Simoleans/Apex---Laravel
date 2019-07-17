@@ -8,7 +8,7 @@
     <meta name="description" content="Apex admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
     <meta name="keywords" content="admin template, Apex admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="PIXINVENT">
-    <title>Register Page - Apex responsive bootstrap 4 admin template</title>
+    <title>{{ config('app.name') }}</title>
     <link rel="apple-touch-icon" sizes="60x60" href="app-assets/img/ico/apple-icon-60.png">
     <link rel="apple-touch-icon" sizes="76x76" href="app-assets/img/ico/apple-icon-76.png">
     <link rel="apple-touch-icon" sizes="120x120" href="app-assets/img/ico/apple-icon-120.png">
@@ -60,31 +60,51 @@
                               <p class="card-text mb-3">
                                 (*) Requeridos
                               </p>
-                              <input type="text" class="form-control mb-3" placeholder="Nombre" />
-                              <input type="email" class="form-control mb-3" placeholder="Email" />
-                              <input type="password" class="form-control mb-3" placeholder="Contraseña" />
-                              <input type="password" class="form-control mb-3" placeholder="Confirmar Contraseña" />
-                              <div class="custom-control custom-checkbox custom-control-inline mb-3">
-                                <input type="checkbox" id="customCheckboxInline1" name="customCheckboxInline1" class="custom-control-input"
-                                  checked />
-                                <label class="custom-control-label" for="customCheckboxInline1">
-                                  Aceptar <a href="#">Términos Y Condiciones</a>
-                                </label>
-                              </div>
-                              <div class="fg-actions d-flex justify-content-between">
-                                <div class="login-btn">
-                                  <button class="btn btn-outline-primary">
-                                    <a href="{{url('/')}}" class="text-decoration-none">
-                                      Iniciar Sesión
-                                    </a>
-                                  </button>
+                              <form action="{{route('user.store')}}" method="POST">
+                                @csrf
+                                <input type="text" class="form-control mb-3 error" placeholder="Nombre" required="" name="nombre" />
+                                <div class="form-group error">
+                    <h5>Repeat Email Field <span class="required">*</span></h5>
+                    <div class="controls mb-1">
+                      <input type="email" name="email2" data-validation-match-match="email" class="form-control mb-1" required="" aria-invalid="true">
+                      <p>Add <code>data-validation-match-match</code> attribute with the field name as value to match
+                        with it.</p>
+                    <div class="help-block"><ul role="alert"><li>This is required<!-- data-validator-required-message to override --></li></ul></div></div>
+                  </div>
+                                <input type="email" class="form-control mb-3 {{ $errors->has('email')?'has-error':'' }}" placeholder="Email" required="" name="email" />
+                                <input type="password" class="form-control mb-3 {{ $errors->has('password')?'has-error':'' }}" placeholder="Contraseña" name="password" />
+                                @error('password')
+                                    <div class="alert alert-danger">>{{Session::get('flash_message')}}</div>
+                                @enderror
+                                <input type="password" class="form-control mb-3 {{ $errors->has('password_confirmation')?'has-error':'' }}" placeholder="Confirmar Contraseña" required="" />
+                                <div class="custom-control custom-checkbox custom-control-inline mb-3">
+                                  <input type="checkbox" id="customCheckboxInline1" name="terminos" required="" class="custom-control-input"
+                                     />
+                                  <label class="custom-control-label" for="customCheckboxInline1">
+                                    Aceptar <a href="#">Términos Y Condiciones</a>
+
+                                  </label>
                                 </div>
-                                <div class="recover-pass">
-                                  <button class="btn btn-primary">
-                                    <a href="login-page.html" class="text-decoration-none text-white">
-                                      Register
-                                    </a>
-                                  </button>
+                                <div class="fg-actions d-flex justify-content-between">
+                                  <div class="login-btn">
+                                      <a href="{{url('/')}}" class=" btn btn-outline-primary">
+                                        Iniciar Sesión
+                                      </a>
+                                  </div>
+                                  <div class="recover-pass">
+                                    <button class="btn btn-primary">
+                                        Register
+                                    </button>
+                                </form>
+                                  @if (count($errors) > 0)
+                                    <div class="alert alert-danger alert-important">
+                                      <ul>
+                                        @foreach($errors->all() as $error)
+                                          <li>{{$error}}</li>
+                                        @endforeach
+                                      </ul>
+                                    </div>
+                                  @endif
                                 </div>
                               </div>
                             </div>
