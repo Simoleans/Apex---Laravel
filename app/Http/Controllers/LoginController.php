@@ -26,4 +26,11 @@ class LoginController extends Controller
             return redirect()->route('login')->withErrors('¡Error! , Revise sus credenciales');
         }
     }
+
+    public function logout()
+    {
+        /*---- funcion de salir/logout/cerrar sesion --*/
+        Auth::logout();
+        return redirect('/');
+    }
 }

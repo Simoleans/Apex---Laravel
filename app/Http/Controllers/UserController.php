@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -38,8 +39,26 @@ class UserController extends Controller
         $this->validate($request, [
             'nombre'   => 'required',
             'email'    => 'required|email|unique:users',
-            'password' => 'required|min:8|confirmed',
+            'password' => 'required|min:7|confirmed',
         ]);
+
+        $user = new User;
+        $user->fill($request->all());
+        $user->password = bcrypt($request->input('password'));
+
+        if ($user->save()) {
+            return redirect("/")->with([
+                'flash_message' => 'Usuario agregado correctamente.',
+                'flash_class'   => 'alert-success',
+            ]);
+        } else {
+            return redirect("/")->with([
+                'flash_message'   => 'Ha ocurrido un error.',
+                'flash_class'     => 'alert-danger',
+                'flash_important' => true,
+            ]);
+        }
+
     }
 
     /**

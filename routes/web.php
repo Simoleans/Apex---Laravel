@@ -13,12 +13,16 @@
 
 Route::get('/', function () {
     return view('login');
-});
+})->name('login');
 Route::get('/registrar', function () {
     return view('register');
 })->name('registrar.public');
 
 Route::post('auth', 'LoginController@login')->name('auth');
+Route::get('/logout', 'LoginController@logout')->name('logout');
 Route::resource('/user', 'UserController');
 
-Route::get('/dashboard', 'LoginController@index')->name('dashboard');
+Route::group(['middleware' => 'auth'], function () {
+    //middleware auth
+    Route::get('/dashboard', 'LoginController@index')->name('dashboard');
+});

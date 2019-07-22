@@ -60,51 +60,53 @@
                               <p class="card-text mb-3">
                                 (*) Requeridos
                               </p>
-                              <form action="{{route('user.store')}}" method="POST">
-                                @csrf
-                                <input type="text" class="form-control mb-3 error" placeholder="Nombre" required="" name="nombre" />
-                                <div class="form-group error">
-                    <h5>Repeat Email Field <span class="required">*</span></h5>
-                    <div class="controls mb-1">
-                      <input type="email" name="email2" data-validation-match-match="email" class="form-control mb-1" required="" aria-invalid="true">
-                      <p>Add <code>data-validation-match-match</code> attribute with the field name as value to match
-                        with it.</p>
-                    <div class="help-block"><ul role="alert"><li>This is required<!-- data-validator-required-message to override --></li></ul></div></div>
-                  </div>
-                                <input type="email" class="form-control mb-3 {{ $errors->has('email')?'has-error':'' }}" placeholder="Email" required="" name="email" />
-                                <input type="password" class="form-control mb-3 {{ $errors->has('password')?'has-error':'' }}" placeholder="Contraseña" name="password" />
-                                @error('password')
-                                    <div class="alert alert-danger">>{{Session::get('flash_message')}}</div>
-                                @enderror
-                                <input type="password" class="form-control mb-3 {{ $errors->has('password_confirmation')?'has-error':'' }}" placeholder="Confirmar Contraseña" required="" />
-                                <div class="custom-control custom-checkbox custom-control-inline mb-3">
-                                  <input type="checkbox" id="customCheckboxInline1" name="terminos" required="" class="custom-control-input"
-                                     />
-                                  <label class="custom-control-label" for="customCheckboxInline1">
-                                    Aceptar <a href="#">Términos Y Condiciones</a>
+                                <form action="{{route('user.store')}}" method="POST">
+                                  @csrf
+                                  <input type="text" class="form-control mb-3 error" placeholder="Nombre" required="" name="nombre" />
 
-                                  </label>
-                                </div>
-                                <div class="fg-actions d-flex justify-content-between">
-                                  <div class="login-btn">
-                                      <a href="{{url('/')}}" class=" btn btn-outline-primary">
-                                        Iniciar Sesión
-                                      </a>
+                                  <div class="form-group {{ $errors->has('email')? 'error':'' }}">
+                                    <input type="email" class="form-control mb-3 " placeholder="Email" required="" name="email" value="{{old('email')}}" />
                                   </div>
-                                  <div class="recover-pass">
-                                    <button class="btn btn-primary">
-                                        Register
-                                    </button>
-                                </form>
-                                  @if (count($errors) > 0)
-                                    <div class="alert alert-danger alert-important">
-                                      <ul>
+
+
+                                  <div class="form-group {{ $errors->has('password')? 'error':'' }}">
+                                    <input type="password" class="form-control mb-3 " placeholder="Contraseña" name="password" />
+                                  </div>
+
+                                  <div class="form-group {{ $errors->has('password')?'error':'' }}">
+                                    <input type="password" class="form-control mb-3 " placeholder="Confirmar Contraseña" name="password_confirmation" required="" />
+                                  </div>
+                                  <div class="custom-control custom-checkbox custom-control-inline mb-3">
+                                    <input type="checkbox" id="customCheckboxInline1" name="terminos" required="" class="custom-control-input"
+                                       />
+                                    <label class="custom-control-label" for="customCheckboxInline1">
+                                      Aceptar <a href="#">Términos Y Condiciones</a>
+                                    </label>
+                                   @if(count($errors) > 0)
+                                   <hr>
+                                    <div class="help-block">
+                                      <ul role="alert">
                                         @foreach($errors->all() as $error)
-                                          <li>{{$error}}</li>
+                                          <li class="danger">{{ $error }}</li>
                                         @endforeach
                                       </ul>
                                     </div>
-                                  @endif
+                                   @endif
+                                  </div>
+                                  <div class="fg-actions d-flex justify-content-between">
+                                    <div class="login-btn">
+                                        <a href="{{url('/')}}" class=" btn btn-outline-primary">
+                                          Iniciar Sesión
+                                        </a>
+                                    </div>
+                                    <div class="recover-pass">
+                                      <button class="btn btn-primary">
+                                          Registrar
+                                      </button>
+                                    </div>
+
+                                  </form>
+
                                 </div>
                               </div>
                             </div>
@@ -115,6 +117,7 @@
                   </div>
                 </div>
               </div>
+
             </section>
             <!--Registration Page Ends-->
 
