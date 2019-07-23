@@ -27,6 +27,7 @@
     <link rel="stylesheet" type="text/css" href='{{asset("app-assets/vendors/css/perfect-scrollbar.min.css")}}'>
     <link rel="stylesheet" type="text/css" href='{{asset("app-assets/vendors/css/prism.min.css")}}'>
     <link rel="stylesheet" type="text/css" href='{{asset("app-assets/vendors/css/chartist.min.css")}}'>
+    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/vendors/css/tables/datatable/datatables.min.css')}}">
     <!-- END VENDOR CSS-->
     <!-- BEGIN APEX CSS-->
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/app.css')}}">
@@ -67,6 +68,14 @@
 
     <!-- Custom SCRIPT por Pagina -->
     @yield('script')
+    <script type="text/javascript">
+      $(".dataTable").DataTable({
+          responsive: true,
+          language: {
+            url:'{{asset("app-assets/vendors/js/datatable/spanish.json")}}'
+          }
+        });
+    </script>
   </body>
   <!-- END : Body-->
 </html>

@@ -19,4 +19,5 @@
     <!-- END APEX JS-->
     <!-- BEGIN PAGE LEVEL JS-->
     <script src="{{asset('app-assets/js/dashboard2.js')}}" type="text/javascript"></script>
+    <script src="{{asset('app-assets/vendors/js/datatable/datatables.min.js')}}" type="text/javascript"></script>
     <!-- END PAGE LEVEL JS-->
