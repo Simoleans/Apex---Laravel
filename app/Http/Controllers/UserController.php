@@ -81,7 +81,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+         $user = User::findOrfail($id);
+
+        return view('user.edit',['user' => $user]);
     }
 
     /**
@@ -93,7 +95,26 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+         $user = User::findOrfail($id);
+
+        $this->validate($request, [
+            'email' => 'required|email|unique:users,email,' . $user->id . ',id',
+        ]);
+
+         $user->fill($request->all());
+
+         if ($user->save()) {
+            return redirect("user")->with([
+                'flash_message' => 'Usuario modificado correctamente.',
+                'flash_class'   => 'alert-success',
+            ]);
+        } else {
+            return redirect("user")->with([
+                'flash_message'   => 'Ha ocurrido un error.',
+                'flash_class'     => 'alert-danger',
+                'flash_important' => true,
+            ]);
+        }
     }
 
     /**
