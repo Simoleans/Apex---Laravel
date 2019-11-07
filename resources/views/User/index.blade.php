@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-
-<section id="ordering">
+<div class="row">
+  <section id="ordering">
   <div class="row">
     <div class="col-12">
       @include('partials.flash')
@@ -24,14 +24,14 @@
               <tbody>
               @foreach($users as $u)
                <tr>
-	               	<td class="text-center">{{$u->nombre}}</td>
-	               	<td class="text-center">{{$u->email}}</td>
-	               	<td class="text-center">
-	               		<!-- <a href="{{route('user.show',['id' => $u->id])}}" class="btn btn-raised btn-success btn-min-width mr-1 mb-1"><i class="fa fa-eye" title="Ver"></i></a> -->
-	               		<a href="{{route('user.edit',['id' => $u->id])}}" class="btn btn-raised btn-warning btn-min-width mr-1 mb-1"><i class="fa fa-edit" title="Ver"></i></a>
-	               	</td>
+                  <td class="text-center">{{$u->nombre}}</td>
+                  <td class="text-center">{{$u->email}}</td>
+                  <td class="text-center">
+                    <!-- <a href="{{route('user.show',['id' => $u->id])}}" class="btn btn-raised btn-success btn-min-width mr-1 mb-1"><i class="fa fa-eye" title="Ver"></i></a> -->
+                    <a href="{{route('user.edit',['id' => $u->id])}}" class="btn btn-raised btn-warning btn-min-width mr-1 mb-1"><i class="fa fa-edit" title="Ver"></i></a>
+                  </td>
                </tr>
-			  @endforeach
+              @endforeach
               </tbody>
             </table>
           </div>
@@ -40,6 +40,8 @@
     </div>
   </div>
 </section>
+</div>
+
 <!--/ Default ordering table -->
 
 @endsection
